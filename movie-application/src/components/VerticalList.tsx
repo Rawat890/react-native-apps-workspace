@@ -1,14 +1,16 @@
 import { AntDesign } from '@expo/vector-icons';
 import React from 'react';
 import {
- FlatList,
- Image,
- StyleSheet,
- Text,
- TouchableOpacity,
- View,
+  FlatList,
+  Image,
+  StyleSheet,
+  Text,
+  TouchableOpacity,
+  View,
 } from 'react-native';
+import { scale } from 'react-native-size-matters';
 import { Movie } from '../api/types';
+import { COLORS } from '../utils/colors';
 import { screenWidth } from '../utils/constants';
 
 export default function VerticalList({
@@ -29,17 +31,17 @@ export default function VerticalList({
         />
         <View style={styles.contentColumn}>
           <Text style={styles.itemTitle}>{item.title}</Text>
-{
-    onDelete &&<TouchableOpacity onPress={() =>  onDelete(item)}>
-            <AntDesign
-              name="delete"
-              size={20}
-              color="black"
-              style={styles.deleteIcon}
-            />
-          </TouchableOpacity>
-}
-          
+          {
+            onDelete && <TouchableOpacity onPress={() => onDelete(item)}>
+              <AntDesign
+                name="delete"
+                size={20}
+                color="black"
+                style={styles.deleteIcon}
+              />
+            </TouchableOpacity>
+          }
+
         </View>
       </View>
     );
@@ -63,24 +65,25 @@ export default function VerticalList({
 const styles = StyleSheet.create({
   rowItem: {
     minWidth: screenWidth - 20,
-    padding: 20,
-    backgroundColor: '#f57171',
-    borderRadius: 10,
+    padding: scale(12),
+    backgroundColor: COLORS.orange,
+    borderRadius: scale(10),
     flexDirection: 'row',
+    elevation: 4,
     width: '100%',
   },
   posterImage: {
-    width: 100,
-    height: 150,
+    width: scale(100),
+    height: scale(150),
   },
   contentColumn: {
     flexDirection: 'column',
     gap: 10,
   },
   itemTitle: {
-    marginLeft: 10,
-    marginTop: 20,
-    fontSize: 16,
+    marginLeft: scale(10),
+    marginTop: scale(20),
+    fontSize: scale(16),
     fontWeight: 'bold',
     width: 200,
   },
@@ -92,12 +95,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
     marginHorizontal: 5,
-    borderRadius: 10,
+    borderRadius: scale(10),
   },
   sectionTitle: {
-    marginLeft: 10,
-    marginBottom: 10,
-    fontSize: 16,
+    marginLeft: scale(10),
+    marginBottom: scale(10),
+    fontSize: scale(20),
     fontWeight: 'bold',
   },
   listContent: {

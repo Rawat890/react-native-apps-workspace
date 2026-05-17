@@ -1,7 +1,8 @@
 import { EvilIcons } from '@expo/vector-icons';
 import React from 'react';
 import { StyleSheet, TextInput, View } from 'react-native';
-import { screenWidth } from '../utils/constants';
+import { scale } from 'react-native-size-matters';
+import { COLORS } from '../utils/colors';
 
 
 interface SearchBarProps {
@@ -19,6 +20,7 @@ export default function SearchBar({value,onChangeText,searchMovie}:SearchBarProp
           onSubmitEditing={searchMovie}
           onChangeText={onChangeText}
           style={styles.input}
+          placeholder='Enter movie name'
         />
       </View>
   )
@@ -27,16 +29,17 @@ export default function SearchBar({value,onChangeText,searchMovie}:SearchBarProp
 const styles = StyleSheet.create({
   container: {
     flexDirection: 'row',
-    justifyContent: 'flex-start',
-    minWidth: screenWidth - 20,
-    borderColor: '#423f3f',
+    borderColor: COLORS.grey,
     borderWidth: 1,
-    borderRadius: 20,
+    borderRadius: scale(20),
+    padding: scale(10),
+    marginHorizontal: scale(5),
     alignItems: 'center',
-    paddingLeft: 10,
+    paddingLeft: scale(10),
+    marginRight: scale(5),
   },
   input: {
     width: '100%',
-    height: 40,
+    height: scale(30),
   },
 })
