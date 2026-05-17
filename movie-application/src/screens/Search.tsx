@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 
 
+import { scale } from 'react-native-size-matters';
 import { getnowPlayingMovies, searchMovies } from '../api/tmdbAPI';
 import { Movie } from '../api/types';
 import SearchBar from '../components/SearchBar';
@@ -37,7 +38,7 @@ export default function Search() {
   return (
     <>
       <View style={styles.header}>
-        <Text style={styles.title}>Search</Text>
+        <Text style={styles.title}>Search movies</Text>
         <SearchBar value={text} onChangeText={onSearch} searchMovie={searchMovie} />
       </View>
       <VerticalList data={data} />
@@ -50,11 +51,12 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   header: {
-    marginLeft: 10,
+    marginHorizontal: scale(10),
   },
   title: {
-    fontSize: 20,
+    fontSize: scale(20),
+    textAlign: 'center',
     fontWeight: 'bold',
-    marginVertical: 5,
+    marginVertical: scale(5),
   },
 });
